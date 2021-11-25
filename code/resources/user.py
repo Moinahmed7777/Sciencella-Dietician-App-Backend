@@ -10,25 +10,19 @@ class UserRegister(Resource):
     type=str
     )
     parser.add_argument('first_name',
-    type=str,
-    required=True,
-    help="This field cannot be blank."
+    type=str
     )
     parser.add_argument('last_name',
-    type=str,
-    required=True,
-    help="This field cannot be left blank."
+    type=str
     )
     parser.add_argument('email',
-    type=str,
-    required=True,
-    help="This field cannot be left blank."
+    type=str
     )
 
     def get(self):
         data = UserRegister.parser.parse_args()
         
-        user = UserModel.find_by_uuid(data['uuid'])
+        user = UserModel.find_by_email(data['email'])
         if user:
             return user.json()
         return {'message': 'User not found'}, 404
