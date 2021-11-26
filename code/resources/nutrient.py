@@ -110,7 +110,7 @@ class Nutrient(Resource):
                 except:
                     return {"message": "An error occurred creating the nutrient."}, 500 # Internal Server Error
 
-        return nutrient.uuid, 201
+        return {"message": "Nutrient Store success"}, 201
     
     
 
