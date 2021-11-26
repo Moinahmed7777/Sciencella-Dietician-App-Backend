@@ -18,17 +18,36 @@ class MealRegister(Resource):
     type=str,
     help="This field cannot be blank."
     )
-    parser.add_argument('timestamp',
-    type=str,
-    required=True,
-    help="This field cannot be blank."
+    parser.add_argument('date',
+    type=str
+    #required=True,
+    #help="This field cannot be blank."
+    )
+    parser.add_argument('time',
+    type=str
+    #required=True,
+    #help="This field cannot be blank."
     )
     
 
     def get(self):
         data = MealRegister.parser.parse_args()
+        #
+        if data['time']==None:
+            if data['date']==None:
+                meallog = Meal_log.find_by_uuid(data['uuid'])
+            else:
+                meallog = Meal_log.find_by_uuid_date(data['uuid'],data['date'])
+        elif data['time']!=None:
+            if data['date']==None:
+                
+                meallog = Meal_log.find_by_uuid_time(data['uuid'],data['time'])
+            else:
+                meallog = Meal_log.find_by_uuid_datetime(data['uuid'],data['date'],data['time'])
         
-        meallog = Meal_log.find_by_uuid_timestamp(data['uuid'],data['timestamp'])
+        #print("llalalaalaasdasdasdasdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",data['time'])
+            
+        #print(meallog)
         if meallog:
             return {'meal_logs': [meallog.json() for meallog in meallog]}
         return {'message': 'uuid+timestamp entry not found'}, 404

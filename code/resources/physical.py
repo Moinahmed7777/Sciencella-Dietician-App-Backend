@@ -60,10 +60,14 @@ class Physical(Resource):
                                     data['height']
                                     )
         else:
-            physical.age = data['age']
-            physical.gender = data['gender']
-            physical.weight = data['weight']
-            physical.height = data['height']
+            if data['age']:
+                physical.age = data['age']
+            if data['gender']:
+                physical.gender = data['gender']
+            if data['weight']:
+                physical.weight = data['weight']
+            if data['height']:
+                physical.height = data['height']
 
         physical.save_to_db()
 

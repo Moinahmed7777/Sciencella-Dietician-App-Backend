@@ -31,13 +31,14 @@ class DM_Model(db.Model):
     polyunsaturated_fatty_acid = db.Column(db.Integer, nullable=False)
     cholesterol = db.Column(db.Integer, nullable=False)
     meal_count = db.Column(db.Integer, nullable=False)
+    date = db.Column(db.String(40), nullable=False)
     
     #user_id = db.Column(db.Integer, ForeignKey('user.uuid'), nullable=False)
     
     
     def __init__(self,uuid,energy, protein, total_lipid, carbohydrate, fiber, sugar,
                  calcium, iron, sodium, vitamin_a, vitamin_c, vitamin_d,
-                 saturated_fatty_acid, monounsaturated_fatty_acid, polyunsaturated_fatty_acid, cholesterol,meal_count
+                 saturated_fatty_acid, monounsaturated_fatty_acid, polyunsaturated_fatty_acid, cholesterol,meal_count,date
                  ):
         self.uuid=uuid
         self.energy = energy
@@ -58,6 +59,7 @@ class DM_Model(db.Model):
         self.polyunsaturated_fatty_acid = polyunsaturated_fatty_acid
         self.cholesterol = cholesterol
         self.meal_count = meal_count
+        self.date=date
         
     def json(self):
         return {'uuid': self.uuid,
@@ -80,7 +82,8 @@ class DM_Model(db.Model):
                 'monounsaturated_fatty_acid': self.monounsaturated_fatty_acid,
                 'polyunsaturated_fatty_acid': self.polyunsaturated_fatty_acid,
                 'cholesterol': self.cholesterol,
-                'meal_count': self.meal_count
+                'meal_count': self.meal_count,
+                'date': self.date
                 
                 }
     

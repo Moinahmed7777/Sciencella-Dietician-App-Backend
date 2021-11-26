@@ -14,23 +14,29 @@ class Meal_log(db.Model):
     id = db.Column(db.String(36), primary_key=True)
     uuid = db.Column(db.String(36), nullable=False)
     meal = db.Column(db.String(100), nullable=False)
-    timestamp = db.Column(db.String(40), nullable=False)
+    date = db.Column(db.String(40), nullable=False)
+    time = db.Column(db.String(40), nullable=False)
+    meal_name = db.Column(db.String(50), nullable=False)
     #email = db.Column(db.String(80), unique=True, index=True)
 
     #physical = db.relationship('PhysicalModel', backref='usermodel', uselist=False)
 
-    def __init__(self, id, uuid, meal, timestamp):
+    def __init__(self, id, uuid, meal, date,time,meal_name):
         self.id = id
         self.uuid = uuid
         self.meal = meal
-        self.timestamp = timestamp
+        self.date = date
+        self.time = time
+        self.meal_name= meal_name
         #self.email = email
 
     def json(self):
         return {'id': self.id,
                 'uuid': self.uuid,
                 'meal': self.meal,
-                'timestamp': self.timestamp
+                'date': self.date,
+                'time': self.time,
+                'meal_name': self.meal_name
                 }
 
     @classmethod
@@ -40,10 +46,20 @@ class Meal_log(db.Model):
     @classmethod
     def find_by_email(cls, email):
         return cls.query.filter_by(email=email).first()
-
+    
+    @classmethod 
+    def find_by_uuid(cls, uuid):
+        return cls.query.filter_by(uuid=uuid).all()
+    
+    @classmethod 
+    def find_by_uuid_time(cls, uuid,time):
+        return cls.query.filter_by(uuid=uuid,time=time).all()
+    @classmethod 
+    def find_by_uuid_date(cls, uuid,date):
+        return cls.query.filter_by(uuid=uuid,date=date).all()
     @classmethod
-    def find_by_uuid_timestamp(cls, uuid,timestamp):
-        return cls.query.filter_by(uuid=uuid,timestamp=timestamp).all()
+    def find_by_uuid_datetime(cls, uuid,date,time):
+        return cls.query.filter_by(uuid=uuid,date=date,time=time).all()
 
     def save_to_db(self):
         db.session.add(self)

@@ -1,12 +1,13 @@
 from flask import Flask
 from flask_restful import Api
 #from flask_mysqldb import MySQL
-from resources.user import UserRegister, UserList
+from resources.user import UserRegister, UserList , Update_User
 from resources.physical import Physical, PhysicalList
 from resources.nutrient import Nutrient, NutrientList, Nutrient_delete
 from resources.scoring_table import Scoring, ScoringList
 from resources.dummy_DM import DM_register, DM_List,DM_delete
 from resources.meal_score import meal_calc
+from resources.meal_score_count import mealcalc_count
 from resources.meal_log import MealRegister
 from foodpred import pred
 from db import db
@@ -36,6 +37,9 @@ def create_tables():
 
 api.add_resource(UserRegister, '/user')
 api.add_resource(UserList, '/users')
+
+api.add_resource(Update_User, '/update_user')
+
 api.add_resource(Physical, '/physical')
 api.add_resource(PhysicalList, '/physicals')
 
@@ -54,8 +58,8 @@ api.add_resource(meal_calc, '/meal_calc')
 
 api.add_resource(MealRegister, '/meal')
 
-
-api.add_resource(pred, '/pred')
+api.add_resource(mealcalc_count, '/mealcalc_count')
+#api.add_resource(pred, '/pred')
 
 
 if __name__ == '__main__':

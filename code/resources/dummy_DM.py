@@ -6,12 +6,13 @@ Created on Thu Nov 18 01:57:54 2021
 """
 
 from models.dummy_DM import DM_Model
-from flask_restful import Resource, reqparse,abort,fields,marshal_with
+from flask_restful import Resource, reqparse,abort,fields,marshal_with,request
 from models.user import UserModel
 from models.meal_log import Meal_log
 from usda import foodret
 import uuid
 import datetime
+from foodpred import pred
 
 class DM_register(Resource):
     parser = reqparse.RequestParser()
@@ -56,7 +57,7 @@ class DM_register(Resource):
     #  if uuid exists in the UserModel and also in the NutrientModel then it updates according to the args passed. 
     
     ##note:for DM_Model if attribute doesnt exist put 0 in that field
-    #################note check data units of nutrients#################
+    
     def put(self):
         data1 = DM_register.parser.parse_args()
         ct = datetime.datetime.now()
@@ -64,10 +65,19 @@ class DM_register(Resource):
             if DM_Model.find_by_uuid(data1['uuid'])==None:
                 uuid_1 = data1['uuid']
                 
-                food = data1['food'].replace("_", " ") #to replace "_" with emptyspace
+                #comment this section 
+                file = request.files['image']
+                prediction = pred(file)
+                
+                food = prediction.replace("_", " ")
+                print(food)
+                #
+                
+                #uncomment this to insert food manually
+                #food = data1['food'].replace("_", " ") #to replace "_" with emptyspace
                 
                 data = foodret(food)
-                
+                ts = str(ct.year)+"-"+str(ct.month)+"-"+str(ct.day)
                 nutrient = DM_Model(str(uuid_1),
                                          data['energy'],
                                          data['protein'],
@@ -86,13 +96,15 @@ class DM_register(Resource):
                                          data['monounsaturated_fatty_acid'],
                                          data['polyunsaturated_fatty_acid'],
                                          data['cholesterol'],
-                                         str(1))
+                                         str(1),
+                                         ts)
                 
                 ##
                 nutrient_str = str(data['energy']) + "," + str(data['protein']) + "," + str(data['total_lipid']) + ","+ str(data['carbohydrate']) + ","+ str(data['fiber']) + ","+ str(data['sugar']) + "," + str(data['calcium']) + "," + str(data['iron']) + "," + str(data['sodium']) + "," + str(data['vitamin_a']) + "," + str(data['vitamin_c']) + "," + str(data['vitamin_d']) + "," + str(data['saturated_fatty_acid']) + "," + str(data['monounsaturated_fatty_acid']) + "," + str(data['polyunsaturated_fatty_acid']) + "," + str(data['cholesterol'])
                 print(nutrient_str)
-                ts = str(ct.year)+"-"+str(ct.month)+"-"+str(ct.day)
-                meal = Meal_log(str(uuid.uuid4()),data1['uuid'],nutrient_str ,ts)
+                
+                tstime=str(ct.hour)+':'+str(ct.minute)
+                meal = Meal_log(str(uuid.uuid4()),data1['uuid'],nutrient_str ,ts,tstime,food)
                 
                 ##
                 try:
@@ -103,10 +115,24 @@ class DM_register(Resource):
             else:
                 nutrient = DM_Model.find_by_uuid(data1['uuid'])
                 
-                food = data1['food'].replace("_", " ")  #to replace "_" with emptyspace
+                #comment this section 
+                file = request.files['image']
+                prediction = pred(file)
+                #food = data1['food'].replace("_", " ") #to replace "_" with emptyspace
+                food = prediction.replace("_", " ")
+                print(food)
+                #
+                
+                #uncomment to insert food manually
+                #food = data1['food'].replace("_", " ")  #to replace "_" with emptyspace
                 
                 data = foodret(food)
                 #data = foodret(data1['food'])
+                
+                ts = str(ct.year)+"-"+str(ct.month)+"-"+str(ct.day)
+                if nutrient.date != ts:
+                    nutrient.energy,nutrient.protein,nutrient.total_lipid,nutrient.carbohydrate,nutrient.sugar,nutrient.calcium,nutrient.iron,nutrient.sodium,nutrient.vitamin_a,nutrient.vitamin_c,nutrient.vitamin_d,nutrient.saturated_fatty_acid,nutrient.monounsaturated_fatty_acid,nutrient.polyunsaturated_fatty_acid,nutrient.cholesterol,nutrient.meal_count=[0]*16
+                    nutrient.date = ts
                 if data['energy']:
                     nutrient.energy = float(nutrient.energy) + float(data['energy'])
                 if data['protein']:
@@ -146,7 +172,8 @@ class DM_register(Resource):
                 x = nutrient_str.split(",")
                 print(x)
                 ts = str(ct.year)+"-"+str(ct.month)+"-"+str(ct.day)
-                meal = Meal_log(str(uuid.uuid4()),data1['uuid'],nutrient_str ,ts)
+                tstime=str(ct.hour)+':'+str(ct.minute)
+                meal = Meal_log(str(uuid.uuid4()),data1['uuid'],nutrient_str ,ts,tstime,food)
                 
                 ##
                 
@@ -156,7 +183,7 @@ class DM_register(Resource):
                 except:
                     return {"message": "An error occurred creating the nutrient."}, 500 # Internal Server Error
 
-        return nutrient.json(), 201
+        return meal.json(), 201
     
     
 
