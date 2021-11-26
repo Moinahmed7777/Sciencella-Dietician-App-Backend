@@ -50,7 +50,8 @@ class DM_register(Resource):
         
         if nutrient:
             return nutrient.json()
-        return {'message' : 'physical not found'},404
+        
+        return {'message' : 'nutrient not found'},404
         
         
     ## if uuid exists in the UserModel then NutrientModel is created with that uuid, 
