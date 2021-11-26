@@ -21,7 +21,8 @@ class meal_calc(Resource):
         intake = DM_Model.find_by_uuid(data['uuid'])
         
         cummulative_score=100
-        
+        if intake == None:
+            return 0
         #energy
         min_e = float(req.energy)*(.80)
         max_e = float(req.energy)*(1.30)
