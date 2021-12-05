@@ -10,19 +10,13 @@ class UserRegister(Resource):
     type=str,
     )
     parser.add_argument('first_name',
-    type=str,
-    required=True,
-    help="This field cannot be blank."
+    type=str
     )
     parser.add_argument('last_name',
-    type=str,
-    required=True,
-    help="This field cannot be left blank."
+    type=str
     )
     parser.add_argument('email',
-    type=str,
-    required=True,
-    help="This field cannot be left blank."
+    type=str
     )
 
     def get(self):
