@@ -22,7 +22,7 @@ class UserRegister(Resource):
     def get(self):
         data = UserRegister.parser.parse_args()
         
-        user = UserModel.find_by_uuid(data['uuid'])
+        user = UserModel.find_by_email(data['email'])
         if user:
             return user.json()
         return {'message': 'User not found'}, 404
