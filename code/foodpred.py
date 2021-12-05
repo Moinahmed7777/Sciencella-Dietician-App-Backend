@@ -38,7 +38,7 @@ def pred(X):
     print("1")
     #load the tflite model
     #C:\\Users\\Moina\\Desktop\\imgclass_test\\models\\V2XL21kft1k\\
-    TFLITE_FILE_PATH = 'model.tflite'
+    TFLITE_FILE_PATH = './model.tflite'
     tflite_interpreter = tf.lite.Interpreter(model_path=TFLITE_FILE_PATH)
     input_details = tflite_interpreter.get_input_details()
     output_details = tflite_interpreter.get_output_details()
