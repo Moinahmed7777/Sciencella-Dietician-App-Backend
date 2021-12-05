@@ -19,9 +19,33 @@ class mealcalc_count(Resource):
         data = mealcalc_count.parser.parse_args()
         req = NutrientModel.find_by_uuid(data['uuid'])
         intake = DM_Model.find_by_uuid(data['uuid'])
-        count = int(intake.meal_count)
-        cummulative_score=100
+        cummulative_score=0
         
+        #energy
+        cummulative_score += (float(intake.energy)/float(req.energy))*100
+        cummulative_score += (float(intake.protein)/float(req.protein))*100
+        cummulative_score += (float(intake.total_lipid)/float(req.total_lipid))*100
+        cummulative_score += (float(intake.carbohydrate)/float(req.carbohydrate))*100
+        cummulative_score += (float(intake.fiber)/float(req.fiber))*100
+        cummulative_score += (float(intake.sugar)/float(req.sugar))*100
+        cummulative_score += (float(intake.calcium)/float(req.calcium))*100
+        cummulative_score += (float(intake.iron)/float(req.iron))*100
+        cummulative_score += (float(intake.sodium)/float(req.sodium))*100
+        cummulative_score += (float(intake.vitamin_a)/float(req.vitamin_a))*100
+        cummulative_score += (float(intake.vitamin_c)/float(req.vitamin_c))*100
+        cummulative_score += (float(intake.vitamin_d)/float(req.vitamin_d))*100
+        cummulative_score += (float(intake.saturated_fatty_acid)/float(req.saturated_fatty_acid))*100
+        cummulative_score += (float(intake.monounsaturated_fatty_acid)/float(req.monounsaturated_fatty_acid))*100
+        cummulative_score += (float(intake.polyunsaturated_fatty_acid)/float(req.polyunsaturated_fatty_acid))*100
+        cummulative_score += (float(intake.cholesterol)/float(req.cholesterol))*100
+        print(cummulative_score)
+        if req==None:
+            return {'message' : 'nutrient for that uuid not found'},404
+        if intake==None:
+            return {'message' : 'dailymeal for that uuid not found'},404
+        return cummulative_score
+        #return {'message' : 'physical not found'},404
+        '''
         #energy
         min_e = float(req.energy)*(.80)/count
         max_e = float(req.energy)*(1.30)/count
@@ -148,3 +172,4 @@ class mealcalc_count(Resource):
             return {'message' : 'dailymeal for that uuid not found'},404
         return cummulative_score
         #return {'message' : 'physical not found'},404
+        '''

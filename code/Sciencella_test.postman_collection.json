@@ -1,0 +1,453 @@
+{
+	"info": {
+		"_postman_id": "13e32ba0-722d-40a4-ab63-393f34acc599",
+		"name": "Sciencella_test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "uuid",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "first_name",
+							"value": "m",
+							"type": "text"
+						},
+						{
+							"key": "last_name",
+							"value": "a",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "ma@gmai.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/users",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/user",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/user",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/users",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/update_user",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"uuid\": \"01b7ae21-ec12-4253-bfdf-e829be2542b9\",\r\n    \"last_name\": \"ger213\"\r\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/update_user",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"update_user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/nutrient",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \r\n    \"uuid\": \"cc748926-22bb-401e-9ab0-8946544c0e23\",\r\n    \"energy\":\"2026\",\r\n    \"protein\": \"107\",\r\n    \"total_lipid\":\"70\",\r\n    \"carbohydrate\": \"262\",\r\n    \"fiber\":\"36\",\r\n    \"sugar\": \"103\",\r\n    \"calcium\":\"1378\",\r\n    \"iron\": \"13\",\r\n    \"sodium\":\"894\",\r\n    \"vitamin_a\":\"163\",\r\n    \"vitamin_c\": \"24391\",\r\n    \"vitamin_d\":\"370\",\r\n    \"saturated_fatty_acid\": \"14\",\r\n    \"monounsaturated_fatty_acid\":\"36\",\r\n    \"polyunsaturated_fatty_acid\": \"15\",\r\n    \"cholesterol\":\"154\" \r\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/nutrient",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"nutrient"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/nutrient",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		},
+		{
+			"name": "/nutrients",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		},
+		{
+			"name": "/dm",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \r\n    \"uuid\": \"cc748926-22bb-401e-9ab0-8946544c0e23\",\r\n    \"energy\":\"2026\",\r\n    \"protein\": \"107\",\r\n    \"total_lipid\":\"70\",\r\n    \"carbohydrate\": \"262\",\r\n    \"fiber\":\"36\",\r\n    \"sugar\": \"103\",\r\n    \"calcium\":\"1378\",\r\n    \"iron\": \"13\",\r\n    \"sodium\":\"894\",\r\n    \"vitamin_a\":\"163\",\r\n    \"vitamin_c\": \"24391\",\r\n    \"vitamin_d\":\"370\",\r\n    \"saturated_fatty_acid\": \"14\",\r\n    \"monounsaturated_fatty_acid\":\"36\",\r\n    \"polyunsaturated_fatty_acid\": \"15\",\r\n    \"cholesterol\":\"154\" \r\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/nutrient",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"nutrient"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/dms",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/dms",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"dms"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/dm",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/dms",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"dms"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/dm_delete",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \r\n    \"uuid\": \"cc748926-22bb-401e-9ab0-8946544c0e23\",\r\n    \"energy\":\"2026\",\r\n    \"protein\": \"107\",\r\n    \"total_lipid\":\"70\",\r\n    \"carbohydrate\": \"262\",\r\n    \"fiber\":\"36\",\r\n    \"sugar\": \"103\",\r\n    \"calcium\":\"1378\",\r\n    \"iron\": \"13\",\r\n    \"sodium\":\"894\",\r\n    \"vitamin_a\":\"163\",\r\n    \"vitamin_c\": \"24391\",\r\n    \"vitamin_d\":\"370\",\r\n    \"saturated_fatty_acid\": \"14\",\r\n    \"monounsaturated_fatty_acid\":\"36\",\r\n    \"polyunsaturated_fatty_acid\": \"15\",\r\n    \"cholesterol\":\"154\" \r\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/nutrient",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"nutrient"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/nutrient_delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"uuid\": \"399c41aa-d2b1-49b9-99a2-2ac7a99479f4\"\r\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/nutrient_delete",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"nutrient_delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/meal",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"uuid\" : \"fe494486-6bfd-46a5-a987-10796ecd996\",\r\n    \"date\" : \"2021-11-25\"\r\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/meal",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"meal"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/meal_calc",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \r\n    \"uuid\": \"01b7ae21-ec12-4253-bfdf-e829be2542b9\"\r\n    \r\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/meal_calc",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"meal_calc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/mealcalc_count",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \r\n    \"uuid\": \"01b7ae21-ec12-4253-bfdf-e829be2542b9\"\r\n    \r\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/meal_calc",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"meal_calc"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

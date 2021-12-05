@@ -170,8 +170,10 @@ class DM_register(Resource):
                 ##
                 nutrient_str = str(data['energy']) + "," + str(data['protein']) + "," + str(data['total_lipid']) + ","+ str(data['carbohydrate']) + ","+ str(data['fiber']) + ","+ str(data['sugar']) + "," + str(data['calcium']) + "," + str(data['iron']) + "," + str(data['sodium']) + "," + str(data['vitamin_a']) + "," + str(data['vitamin_c']) + "," + str(data['vitamin_d']) + "," + str(data['saturated_fatty_acid']) + "," + str(data['monounsaturated_fatty_acid']) + "," + str(data['polyunsaturated_fatty_acid']) + "," + str(data['cholesterol'])
                 print(nutrient_str)
+                
                 x = nutrient_str.split(",")
                 print(x)
+                
                 ts = str(ct.year)+"-"+str(ct.month)+"-"+str(ct.day)
                 tstime=str(ct.hour)+':'+str(ct.minute)
                 meal = Meal_log(str(uuid.uuid4()),data1['uuid'],nutrient_str ,ts,tstime,food)

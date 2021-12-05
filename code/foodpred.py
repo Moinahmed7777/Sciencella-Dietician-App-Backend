@@ -37,7 +37,8 @@ def pred(X):
     npd = np.expand_dims(numpydata, axis=0)
     print("1")
     #load the tflite model
-    TFLITE_FILE_PATH = 'C:\\Users\\Moina\\Desktop\\imgclass_test\\models\\tflite_v2s1k-101_128b20e\\model.tflite'
+    #C:\\Users\\Moina\\Desktop\\imgclass_test\\models\\V2XL21kft1k\\
+    TFLITE_FILE_PATH = 'model.tflite'
     tflite_interpreter = tf.lite.Interpreter(model_path=TFLITE_FILE_PATH)
     input_details = tflite_interpreter.get_input_details()
     output_details = tflite_interpreter.get_output_details()

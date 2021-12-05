@@ -14,7 +14,8 @@ from db import db
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://admin:8fmH8iuKLEBEHnaXWXdF@development-db.c7heidgc11xf.us-east-1.rds.amazonaws.com:3306/sciencella'
 #app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://admin:8fmH8iuKLEBEHnaXWXdF@development-db.c7heidgc11xf.us-east-1.rds.amazonaws.com"
 #app.config["SQLALCHEMY_DATABASE_URI"]= 'mysql://admin:8fmH8iuKLEBEHnaXWXdF@development-db.c7heidgc11xf.us-east-1.rds.amazonaws.com/sciencella'
 #app.config["SQLALCHEMY_DATABASE_URI"]= 'mysql+mysqlconnector://{user}:{password}@{server}/{database}'.format(user='admin', password='8fmH8iuKLEBEHnaXWXdF', server='development-db.c7heidgc11xf.us-east-1.rds.amazonaws.com', database='sciencella')
