@@ -21,7 +21,7 @@ The app then helps clients to stay on track with their nutritional goals by calc
 - Tensorflow
 
 ## Diagrams
-![image](https://user-images.githubusercontent.com/33766593/222344947-66060ed6-0488-4ea6-aadd-f32f60050da7.png)
+![image](https://user-images.githubusercontent.com/33766593/222347696-6f7a1a48-c1fa-4579-bb6e-34192829bc4e.png)
 
 
 
