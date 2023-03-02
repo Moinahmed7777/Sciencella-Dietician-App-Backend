@@ -23,7 +23,7 @@ The app then helps clients to stay on track with their nutritional goals by calc
 ## Diagrams
 ![image](https://user-images.githubusercontent.com/33766593/222347696-6f7a1a48-c1fa-4579-bb6e-34192829bc4e.png)
 ### UML diagrams
-![UML Class diagram Sciencella](https://user-images.githubusercontent.com/33766593/222350682-5011d6b0-931e-43c7-b1ef-91cdc33a7d2f.png)
+![UML Class diagram Sciencella](https://user-images.githubusercontent.com/33766593/222351099-07cdebe1-df48-426f-87af-71d4388edf86.png)
 
 
 
